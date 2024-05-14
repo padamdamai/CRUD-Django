@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
-
+from .models import *
 
 def home(request):
-    
-    return render(request,'base/home.html')
+    employ = Employees.objects.all()
+    context = {
+        'emp':employ,
+    }
+    return render(request,'base/home.html',context)
     
