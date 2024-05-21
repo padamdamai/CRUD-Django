@@ -46,7 +46,7 @@
                         <td>{{employ.phone}}</td>
                         <td>
                             <a href="#editEmployeeModal-{{forloop.counter}}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            <a href="#deleteEmployeeModal-{{forloop.counter}}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
                     </tr>	
                     {% endfor %}			
@@ -141,7 +141,8 @@
 	</div>
 	{% endfor %}
 	<!-- Delete Modal HTML -->
-	<div id="deleteEmployeeModal" class="modal fade">
+	{% for i in emp %}
+	<div id="deleteEmployeeModal-{{forloop.counter}}" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
@@ -155,10 +156,11 @@
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-danger" value="Delete">
+						<a href="/delete/{{i.id}}" type="submit" class="btn btn-danger" >Delete</a>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
+	{% endfor %}
     {% endblock content %}

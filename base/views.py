@@ -53,3 +53,8 @@ def Update(request,id):
         
 
     return redirect(request,'base/home.html')
+
+def Delete(request,id):
+    emp = Employees.objects.filter(id=id).delete()
+
+    return redirect('home')
